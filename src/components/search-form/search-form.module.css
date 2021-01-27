@@ -1,0 +1,20 @@
+.form {
+  width: 100%;
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: 0.5em;
+  padding-left: 2.5em;
+  border: none;
+  border-bottom: var(--br-bottom);
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-40%);
+  left: 10px;
+  opacity: 0.4;
+}
