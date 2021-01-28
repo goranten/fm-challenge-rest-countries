@@ -16,6 +16,10 @@
   --fs-600: 1.25rem;
 
   --br-bottom: 3px solid hsla(0, 0%, 14%, 0.171);
+  --bxs-bottom: 0 4px 2px -2px gray;
+  --br-radius: 5px;
+
+  --clr-white: #fff;
 }
 
 body {
@@ -58,6 +62,11 @@ button,
 textarea,
 select {
   font: inherit;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
 }
 
 .sr-only {

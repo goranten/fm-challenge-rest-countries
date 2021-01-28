@@ -1,0 +1,31 @@
+.options {
+  position: absolute;
+  bottom: -300px;
+  left: 0;
+  width: 100%;
+  margin-top: 1em;
+  border-radius: var(--br-radius);
+  padding: 0;
+  background-color: var(--clr-white);
+}
+
+.options > * + * {
+  margin-top: 0.5em;
+}
+
+.option button {
+  width: 100%;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: transparent;
+  text-transform: capitalize;
+  padding: 0.5em 0 0.5em 1em;
+  transition: background-color 0.1s;
+  font-weight: var(--fw-600);
+}
+
+.option button:hover {
+  background-color: lightgray;
+}
