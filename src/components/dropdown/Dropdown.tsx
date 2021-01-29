@@ -1,20 +1,28 @@
-import { FC, ReactElement, useEffect, useState } from "react";
+import { FC, ReactElement, useRef, useState } from "react";
 import styles from "./dropdown.module.css";
 import { ReactComponent as ArrowDownIcon } from "../../assets/icons/arrow-down.svg";
 import DropDownList from "./dropdown-list/DropdownList";
 import { wait } from "../../utils";
-import { Option } from "../../types";
 
 interface DropdownProps {
-  options: Option[];
+  options: string[];
+  label: string;
+  id: string;
+  setFilter: (filter: string) => void;
 }
 
-const Dropdown: FC<DropdownProps> = ({ options }): ReactElement => {
+const Dropdown: FC<DropdownProps> = ({
+  options,
+  label,
+  id,
+  setFilter,
+}): ReactElement => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState("");
+  const listRef = useRef<HTMLLIElement>(null);
 
-  function toggleIsOpen() {
+  async function toggleIsOpen() {
     setIsOpen(!isOpen);
+    await wait(50);
   }
 
   async function handleOptionClick(
@@ -25,22 +33,33 @@ const Dropdown: FC<DropdownProps> = ({ options }): ReactElement => {
       return;
     }
 
-    setSelected(value);
+    setFilter(value);
     await wait(100);
     toggleIsOpen();
   }
 
-  useEffect(() => {
-    if (selected.length > 0) {
-      console.log("Request for", selected);
+  function handleKeyUp(e: React.KeyboardEvent<HTMLDivElement>) {
+    if (e.key === "Escape") {
+      setIsOpen(false);
     }
-  }, [selected]);
+  }
 
   return (
     <>
-      <div className={styles.wrapper}>
-        <button onClick={toggleIsOpen} className={styles.header}>
-          <p>Filter by Region...</p>
+      <div onKeyUp={handleKeyUp} className={styles.wrapper}>
+        <button
+          aria-haspopup="true"
+          aria-controls={id}
+          onClick={async () => {
+            toggleIsOpen();
+            if (!isOpen) {
+              await wait(1);
+              listRef.current?.querySelector("button")?.focus();
+            }
+          }}
+          className={styles.header}
+        >
+          <p>{label}</p>
           <ArrowDownIcon />
         </button>
         {isOpen && (
@@ -48,6 +67,8 @@ const Dropdown: FC<DropdownProps> = ({ options }): ReactElement => {
             handleOptionClick={handleOptionClick}
             options={options}
             close={toggleIsOpen}
+            id={id}
+            listRef={listRef}
           />
         )}
       </div>
