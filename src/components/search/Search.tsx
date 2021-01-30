@@ -1,14 +1,19 @@
-import { FC, FormEvent, ReactElement, useState } from "react";
+import { FC, FormEvent, ReactElement } from "react";
 import { ReactComponent as SearchIcon } from "../../assets/icons/search.svg";
 import styles from "./search.module.css";
 
-// interface SearchProps {}
+interface SearchProps {
+  setSearchTerm: (term: string) => void;
+}
 
-const Search: FC = (): ReactElement => {
-  const [term, setTerm] = useState("");
-
+const Search: FC<SearchProps> = ({ setSearchTerm }): ReactElement => {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const searchTerm = formData.get("country");
+    if (typeof searchTerm === "string") {
+      setSearchTerm(searchTerm);
+    }
   }
 
   return (
@@ -18,8 +23,6 @@ const Search: FC = (): ReactElement => {
           Country
         </label>
         <input
-          value={term}
-          onChange={(e) => setTerm(e.target.value)}
           className={styles.input}
           type="text"
           name="country"
