@@ -4,4 +4,8 @@ function wait(ms: number = 500): Promise<void> {
   });
 }
 
-export { wait };
+function slugify(str: string): string {
+  return str.toLowerCase().replace(/\s/g, "-");
+}
+
+export { wait, slugify };

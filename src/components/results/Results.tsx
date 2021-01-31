@@ -3,6 +3,7 @@ import { ReactElement, FC } from "react";
 import { Link } from "react-router-dom";
 import styles from "./results.module.css";
 import { Card } from "../../types";
+import { slugify } from "../../utils";
 
 interface ResultsProps {
   results: Card[];
@@ -36,7 +37,7 @@ const Results: FC<ResultsProps> = ({
       <ul className={styles.list} role="list">
         {results.map((c) => (
           <li key={c.name}>
-            <Link to={`/${c.name.toLowerCase().replace(" ", "-")}`}>
+            <Link to={`/${slugify(c.name)}`}>
               <article className={styles.card}>
                 <img src={c.flag} alt={`flag of ${c.name}`} />
                 <div className={styles.text}>

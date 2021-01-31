@@ -1,0 +1,53 @@
+.detail > * + * {
+  margin-top: 2.5em;
+  --bx-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.country > div + div {
+  margin-top: 1em;
+}
+
+.country h1 {
+  margin: 1em 0;
+}
+
+.back {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  padding: 0.25em 1em;
+  max-width: 8rem;
+  box-shadow: var(--bx-shadow);
+}
+
+.back svg {
+  margin: 0.1em;
+}
+
+.bold {
+  font-weight: var(--fw-600);
+}
+
+.language + .language {
+  margin-left: 0.5em;
+}
+
+.border {
+  font-size: var(--fs-600);
+}
+
+.borders {
+  padding: 0;
+  margin: 0;
+  margin-top: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.borders li {
+  box-shadow: var(--bx-shadow);
+  /* padding: 0.125em 1.5em; */
+  flex-basis: 5rem;
+  text-align: center;
+}

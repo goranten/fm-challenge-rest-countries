@@ -53,9 +53,7 @@ function App() {
               )}
             </Route>
             <Route path="/:name">
-              <section>
-                <Detail />
-              </section>
+              <Detail />
             </Route>
           </Switch>
         </main>
