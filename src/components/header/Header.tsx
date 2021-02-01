@@ -1,9 +1,8 @@
 import { ReactComponent as DarkModeIcon } from "../../assets/icons/moon.svg";
 import { ReactComponent as LightModeIcon } from "../../assets/icons/sun.svg";
-import { FC, ReactElement } from "react";
 import styles from "./header.module.css";
 
-const Header: FC = (): ReactElement => {
+const Header = () => {
   return (
     <header className={styles.header}>
       <p className={styles.logo}>Where in the world</p>

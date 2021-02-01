@@ -1,22 +1,22 @@
-import { FC, RefObject } from "react";
+import { RefObject } from "react";
 import useOutsideClick from "../../../hooks/useOutsideClick";
 import styles from "./dropdown-list.module.css";
 
-interface DropDownListProps {
+type DropDownListProps = {
   options: string[];
   handleOptionClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
   close(): void;
   id: string;
   listRef: RefObject<HTMLLIElement>;
-}
+};
 
-const DropDownList: FC<DropDownListProps> = ({
+const DropDownList = ({
   options,
   handleOptionClick,
   close,
   id,
   listRef,
-}) => {
+}: DropDownListProps) => {
   useOutsideClick("ul.dropdown", close);
 
   return (

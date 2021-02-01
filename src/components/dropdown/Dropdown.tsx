@@ -1,22 +1,17 @@
-import { FC, ReactElement, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import styles from "./dropdown.module.css";
 import { ReactComponent as ArrowDownIcon } from "../../assets/icons/arrow-down.svg";
 import DropDownList from "./dropdown-list/DropdownList";
 import { wait } from "../../utils";
 
-interface DropdownProps {
+type DropdownProps = {
   options: string[];
   label: string;
   id: string;
   setFilter: (filter: string) => void;
-}
+};
 
-const Dropdown: FC<DropdownProps> = ({
-  options,
-  label,
-  id,
-  setFilter,
-}): ReactElement => {
+const Dropdown = ({ options, label, id, setFilter }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const listRef = useRef<HTMLLIElement>(null);
 

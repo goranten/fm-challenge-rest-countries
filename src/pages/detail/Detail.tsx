@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/no-redundant-roles */
-import { FC, ReactElement } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useQueryClient } from "react-query";
 import { AxiosResponse } from "axios";
@@ -18,7 +17,7 @@ interface CountryDetails extends SearchResponse {
   alpha3Code: string;
 }
 
-const Detail: FC = (): ReactElement => {
+const Detail = () => {
   const params = useParams<{ name: string }>();
   const queryClient = useQueryClient();
   const name = params.name.replace(/-/g, " ").toLowerCase();

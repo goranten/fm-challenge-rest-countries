@@ -1,21 +1,16 @@
 /* eslint-disable jsx-a11y/no-redundant-roles */
-import { ReactElement, FC } from "react";
 import { Link } from "react-router-dom";
 import styles from "./results.module.css";
 import { Card } from "../../types";
 import { slugify } from "../../utils";
 
-interface ResultsProps {
+type ResultsProps = {
   results: Card[];
   filter: string;
   searchTerm: string;
-}
+};
 
-const Results: FC<ResultsProps> = ({
-  results,
-  filter,
-  searchTerm,
-}): ReactElement => {
+const Results = ({ results, filter, searchTerm }: ResultsProps) => {
   const numberFormatter = new Intl.NumberFormat("nl-NL");
   if (filter.length > 0) {
     results = results.filter(
@@ -24,6 +19,7 @@ const Results: FC<ResultsProps> = ({
   }
 
   if (searchTerm.length > 0) {
+    console.log(results);
     results = results.filter((c) => {
       if (c.name.toLowerCase().includes(searchTerm.toLowerCase())) {
         return true;
