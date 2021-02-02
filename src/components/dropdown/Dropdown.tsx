@@ -1,19 +1,21 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import styles from "./dropdown.module.css";
 import { ReactComponent as ArrowDownIcon } from "../../assets/icons/arrow-down.svg";
 import DropDownList from "./dropdown-list/DropdownList";
 import { wait } from "../../utils";
+import { SearchContext } from "../../context/searchContext";
 
 type DropdownProps = {
   options: string[];
   label: string;
   id: string;
-  setFilter: (filter: string) => void;
 };
 
-const Dropdown = ({ options, label, id, setFilter }: DropdownProps) => {
+const Dropdown = ({ options, label, id }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const listRef = useRef<HTMLLIElement>(null);
+
+  const ctx = useContext(SearchContext);
 
   async function toggleIsOpen() {
     setIsOpen(!isOpen);
@@ -28,7 +30,7 @@ const Dropdown = ({ options, label, id, setFilter }: DropdownProps) => {
       return;
     }
 
-    setFilter(value);
+    ctx?.setFilterBy(value);
     await wait(100);
     toggleIsOpen();
   }
@@ -54,7 +56,7 @@ const Dropdown = ({ options, label, id, setFilter }: DropdownProps) => {
           }}
           className={styles.header}
         >
-          <p>{label}</p>
+          <p>{ctx!.filterBy.length > 0 ? ctx?.filterBy : label}</p>
           <ArrowDownIcon />
         </button>
         {isOpen && (

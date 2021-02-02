@@ -4,13 +4,16 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { SearchContextProvider } from "./context/searchContext";
 
 const queryClient = new QueryClient();
 
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <App />
+      <SearchContextProvider>
+        <App />
+      </SearchContextProvider>
     </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById("root")

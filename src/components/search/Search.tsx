@@ -1,11 +1,11 @@
+import { useContext } from "react";
 import { ReactComponent as SearchIcon } from "../../assets/icons/search.svg";
+import { SearchContext } from "../../context/searchContext";
 import styles from "./search.module.css";
 
-type SearchProps = {
-  setSearchTerm: (term: string) => void;
-};
+const Search = () => {
+  const ctx = useContext(SearchContext);
 
-const Search = ({ setSearchTerm }: SearchProps) => {
   return (
     <section className={styles.search}>
       <form
@@ -14,7 +14,8 @@ const Search = ({ setSearchTerm }: SearchProps) => {
           const formData = new FormData(e.currentTarget);
           const searchTerm = formData.get("country");
           if (typeof searchTerm === "string") {
-            setSearchTerm(searchTerm);
+            // setSearchTerm(searchTerm);
+            ctx?.setSearchFor(searchTerm);
           }
         }}
         className={styles.form}

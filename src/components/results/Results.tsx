@@ -3,25 +3,27 @@ import { Link } from "react-router-dom";
 import styles from "./results.module.css";
 import { Card } from "../../types";
 import { slugify } from "../../utils";
+import { useContext } from "react";
+import { SearchContext } from "../../context/searchContext";
 
 type ResultsProps = {
   results: Card[];
-  filter: string;
-  searchTerm: string;
 };
 
-const Results = ({ results, filter, searchTerm }: ResultsProps) => {
+const Results = ({ results }: ResultsProps) => {
+  const ctx = useContext(SearchContext);
+
   const numberFormatter = new Intl.NumberFormat("nl-NL");
-  if (filter.length > 0) {
+
+  if (ctx!.filterBy.length > 0 && ctx?.filterBy !== "all") {
     results = results.filter(
-      (c) => c.region.toLowerCase() === filter.toLowerCase()
+      (c) => c.region.toLowerCase() === ctx?.filterBy.toLowerCase()
     );
   }
 
-  if (searchTerm.length > 0) {
-    console.log(results);
+  if (ctx!.searchFor.length > 0) {
     results = results.filter((c) => {
-      if (c.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+      if (c.name.toLowerCase().includes(ctx!.searchFor.toLowerCase())) {
         return true;
       }
       return false;
