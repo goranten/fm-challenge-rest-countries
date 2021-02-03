@@ -1,3 +1,9 @@
+.search {
+  --direction: column;
+  display: flex;
+  flex-direction: var(--direction);
+}
+
 .search > * + * {
   margin-top: 2em;
 }
@@ -14,6 +20,7 @@
   padding-left: 2.5em;
   border: none;
   border-bottom: var(--br-bottom);
+  background-color: var(--clr-accent);
 }
 
 .icon {
@@ -26,4 +33,16 @@
 
 .select {
   max-width: 20rem;
+}
+
+@media (min-width: 48rem) {
+  .search {
+    --direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .search > * + * {
+    margin-top: 0em;
+  }
 }

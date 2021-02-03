@@ -4,6 +4,7 @@
   justify-content: space-between;
   padding: 1em 0;
   border-bottom: var(--br-bottom);
+  background-color: var(--clr-accent);
 }
 
 .logo {

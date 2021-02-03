@@ -4,18 +4,8 @@ import Search from "./components/search/Search";
 import Results from "./components/results/Results";
 import { Card } from "./types";
 import useLoadCountries from "./hooks/useLoadCountries";
-import Dropdown from "./components/dropdown/Dropdown";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Detail from "./pages/detail/Detail";
-
-const options: string[] = [
-  "all",
-  "africa",
-  "americas",
-  "asia",
-  "europe",
-  "oceania",
-];
 
 function App() {
   const { status, error, data } = useLoadCountries();
@@ -38,11 +28,6 @@ function App() {
             <Route path="/" exact>
               <Search />
 
-              <Dropdown
-                options={options}
-                label="Filter by Region..."
-                id="regions"
-              />
               {status === "loading" && <div>Loading...</div>}
               {status === "error" && (
                 <div>{JSON.stringify(error, null, 2)}</div>

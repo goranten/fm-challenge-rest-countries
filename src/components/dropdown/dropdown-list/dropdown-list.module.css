@@ -1,12 +1,12 @@
 .options {
   position: absolute;
-  bottom: -300px;
+  bottom: -350px;
   left: 0;
   width: 100%;
   margin-top: 1em;
   border-radius: var(--br-radius);
   padding: 0;
-  background-color: var(--clr-white);
+  background-color: var(--clr-accent);
 }
 
 .options > * + * {

@@ -20,6 +20,12 @@
   --br-radius: 5px;
 
   --clr-white: #fff;
+  --clr-black: #000;
+  --clr-black-light: rgb(48, 48, 48);
+
+  --clr-text: var(--clr-black);
+  --clr-bg: var(--clr-white);
+  --clr-accent: var(--clr-white);
 }
 
 body {
@@ -28,6 +34,8 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
 }
 
 img,

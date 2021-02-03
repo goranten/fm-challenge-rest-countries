@@ -1,7 +1,17 @@
 import { useContext } from "react";
 import { ReactComponent as SearchIcon } from "../../assets/icons/search.svg";
 import { SearchContext } from "../../context/searchContext";
+import Dropdown from "../dropdown/Dropdown";
 import styles from "./search.module.css";
+
+const options: string[] = [
+  "all",
+  "africa",
+  "americas",
+  "asia",
+  "europe",
+  "oceania",
+];
 
 const Search = () => {
   const ctx = useContext(SearchContext);
@@ -34,6 +44,7 @@ const Search = () => {
           <SearchIcon />
         </span>
       </form>
+      <Dropdown options={options} label="Filter by Region..." id="regions" />
     </section>
   );
 };
