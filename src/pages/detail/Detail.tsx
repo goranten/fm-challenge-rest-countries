@@ -37,77 +37,81 @@ const Detail = () => {
       </Link>
       {country && (
         <article className={styles.country}>
-          <img src={country.flag} alt={`flag of ${country?.name}`} />
-          <h1>{country.name}</h1>
-          <div>
-            <p>
-              <span className={styles.bold}>Native Name:</span>{" "}
-              {country.nativeName}
-            </p>
-            <p>
-              <span className={styles.bold}>Population:</span>{" "}
-              {numberFormatter.format(country.population)}
-            </p>
-            <p>
-              <span className={styles.bold}>Region: </span>
-              {country.region}
-            </p>
-            <p>
-              <span className={styles.bold}>Sub Region: </span>
-              {country.subregion}
-            </p>
-            <p>
-              <span className={styles.bold}>Capital: </span>
-              {country.capital}
-            </p>
+          <div className={styles.imageContainer}>
+            <img src={country.flag} alt={`flag of ${country?.name}`} />
           </div>
-
-          <div>
-            <p>
-              <span className={styles.bold}>Top Level Domain: </span>
-              {country.topLevelDomain[0]}
-            </p>
-            <p>
-              <span className={styles.bold}>Currencies: </span>
-              {country.currencies.map((c) => (
-                <span key={c.code}>{c.code}</span>
-              ))}
-            </p>
-            <p>
-              <span className={styles.bold}>Languages: </span>
-              {country.languages.map((l) => (
-                <span className={styles.language} key={l.name}>
-                  {l.name}
-                </span>
-              ))}
-            </p>
-          </div>
-
-          {country.borders.length > 0 && (
+          <div className={styles.textContainer}>
+            <h1>{country.name}</h1>
             <div>
-              <p className={`${styles.bold} ${styles.border}`}>
-                Border Countries:{" "}
+              <p>
+                <span className={styles.bold}>Native Name:</span>{" "}
+                {country.nativeName}
               </p>
-              <ul className={styles.borders} role="list">
-                {country.borders.map((c) => {
-                  let fullName = data?.data.find(
-                    (country) => country.alpha3Code === c
-                  )?.name;
-                  if (fullName) {
-                    fullName = slugify(fullName);
-                  }
-                  return (
-                    <li key={c}>
-                      <Link to={`/${fullName}`}>{c}</Link>
-                    </li>
-                  );
-                })}
-              </ul>
+              <p>
+                <span className={styles.bold}>Population:</span>{" "}
+                {numberFormatter.format(country.population)}
+              </p>
+              <p>
+                <span className={styles.bold}>Region: </span>
+                {country.region}
+              </p>
+              <p>
+                <span className={styles.bold}>Sub Region: </span>
+                {country.subregion}
+              </p>
+              <p>
+                <span className={styles.bold}>Capital: </span>
+                {country.capital}
+              </p>
             </div>
-          )}
+
+            <div>
+              <p>
+                <span className={styles.bold}>Top Level Domain: </span>
+                {country.topLevelDomain[0]}
+              </p>
+              <p>
+                <span className={styles.bold}>Currencies: </span>
+                {country.currencies.map((c) => (
+                  <span key={c.code}>{c.code}</span>
+                ))}
+              </p>
+              <p>
+                <span className={styles.bold}>Languages: </span>
+                {country.languages.map((l) => (
+                  <span className={styles.language} key={l.name}>
+                    {l.name}
+                  </span>
+                ))}
+              </p>
+            </div>
+
+            {country.borders.length > 0 && (
+              <div className={styles.borderContainer}>
+                <p className={`${styles.bold} ${styles.border}`}>
+                  Border Countries:{" "}
+                </p>
+                <ul className={styles.borders} role="list">
+                  {country.borders.map((c) => {
+                    let fullName = data?.data.find(
+                      (country) => country.alpha3Code === c
+                    )?.name;
+                    if (fullName) {
+                      fullName = slugify(fullName);
+                    }
+                    return (
+                      <li key={c}>
+                        <Link to={`/${fullName}`}>{c}</Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
+          </div>
         </article>
       )}
-      <div>{JSON.stringify(country, null, 2)}</div>
+      {/* <div>{JSON.stringify(country, null, 2)}</div> */}
     </section>
   );
 };
