@@ -5,15 +5,18 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { SearchContextProvider } from "./context/searchContext";
+import { ThemeContextProvider } from "./context/themeContext";
 
 const queryClient = new QueryClient();
 
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <SearchContextProvider>
-        <App />
-      </SearchContextProvider>
+      <ThemeContextProvider>
+        <SearchContextProvider>
+          <App />
+        </SearchContextProvider>
+      </ThemeContextProvider>
     </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById("root")

@@ -1,5 +1,5 @@
 .header {
-  margin-top: 2em;
+  margin: 2em 0;
 }
 
 .list {
@@ -14,12 +14,29 @@
   row-gap: 4em;
 }
 
+.list a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .card {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
   max-width: 25rem;
   background-color: var(--clr-accent);
+  box-shadow: var(--bx-shadow);
+  padding-bottom: 1em;
+}
+
+@media (min-width: 32rem) {
+  .list {
+    gap: 2em;
+  }
+
+  .card {
+    width: 100%;
+  }
 }
 
 .card img {
@@ -33,7 +50,7 @@
 }
 
 .text {
-  width: 90%;
+  max-width: 80%;
   margin-left: auto;
   margin-right: auto;
 }

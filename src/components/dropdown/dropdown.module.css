@@ -6,15 +6,14 @@
 .header {
   width: 100%;
   border: none;
-  /* border: 2px solid black; */
-  padding: 0.5em 0 0.5em 1em;
-  /* box-shadow: var(--bxs-bottom); */
+  padding: 0.5em 1em 0.5em 1em;
   border-bottom: var(--br-bottom);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: var(--clr-accent);
+  text-transform: capitalize;
 }
 
 @media (min-width: 48rem) {

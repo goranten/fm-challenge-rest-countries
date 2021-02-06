@@ -21,6 +21,7 @@
   border: none;
   border-bottom: var(--br-bottom);
   background-color: var(--clr-accent);
+  box-shadow: var(--bx-shadow);
 }
 
 .icon {

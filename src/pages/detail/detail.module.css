@@ -22,6 +22,7 @@
   padding: 0.25em 1em;
   max-width: 8rem;
   box-shadow: var(--bx-shadow);
+  background-color: var(--clr-accent);
 }
 
 @media (min-width: 62rem) {

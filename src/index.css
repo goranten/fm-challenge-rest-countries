@@ -16,15 +16,17 @@
   --fs-600: 1.25rem;
 
   --br-bottom: 3px solid hsla(0, 0%, 14%, 0.171);
+  --bx-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   --bxs-bottom: 0 4px 2px -2px gray;
   --br-radius: 5px;
 
   --clr-white: #fff;
+  --clr-lightgray: #fafafa;
   --clr-black: #000;
   --clr-black-light: rgb(48, 48, 48);
 
   --clr-text: var(--clr-black);
-  --clr-bg: var(--clr-white);
+  --clr-bg: var(--clr-lightgray);
   --clr-accent: var(--clr-white);
 }
 
@@ -36,6 +38,12 @@ body {
   line-height: 1.5;
   background-color: var(--clr-bg);
   color: var(--clr-text);
+}
+
+body.dark {
+  --clr-bg: #202d36;
+  --clr-text: #fff;
+  --clr-accent: #2b3743;
 }
 
 img,
@@ -114,6 +122,12 @@ ol[role="list"] {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+a,
+button,
+input {
+  color: inherit;
 }
 
 /* Layout */
