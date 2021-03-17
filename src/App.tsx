@@ -8,8 +8,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Detail from "./pages/detail/Detail";
 import { useContext, useEffect } from "react";
 import { ThemeContext } from "./context/themeContext";
+import Loading from "./components/loading/Loading";
 
 function App() {
+  // TODO: Fix bug: after searching by name, reset the countries
+  // TODO: When pressing back on details page, reset to all countries
   const { status, error, data } = useLoadCountries();
   const themCtx = useContext(ThemeContext);
 
@@ -39,7 +42,12 @@ function App() {
               <Route path="/" exact>
                 <Search />
 
-                {status === "loading" && <div>Loading...</div>}
+                {status === "loading" && (
+                  <div className="loading-spinner">
+                    <Loading />
+                  </div>
+                )}
+
                 {status === "error" && (
                   <div>{JSON.stringify(error, null, 2)}</div>
                 )}

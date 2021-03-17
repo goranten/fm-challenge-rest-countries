@@ -135,3 +135,9 @@ input {
 header + main {
   margin-top: 2em;
 }
+
+.loading-spinner {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
