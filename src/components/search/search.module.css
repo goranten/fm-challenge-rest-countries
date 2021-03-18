@@ -10,8 +10,11 @@
 
 .form {
   width: 100%;
-  position: relative;
   max-width: 30rem;
+}
+
+.formGroup {
+  position: relative;
 }
 
 .input {
@@ -30,6 +33,13 @@
   transform: translateY(-40%);
   left: 10px;
   opacity: 0.4;
+}
+
+.resetButton {
+  margin-top: 1em;
+  border: 1px solid black;
+  padding: 0.5em 1em;
+  background-color: var(--clr-accent);
 }
 
 .select {

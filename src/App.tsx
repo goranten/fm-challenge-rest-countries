@@ -12,7 +12,6 @@ import Loading from "./components/loading/Loading";
 
 function App() {
   // TODO: Fix bug: after searching by name, reset the countries
-  // TODO: When pressing back on details page, reset to all countries
   const { status, error, data } = useLoadCountries();
   const themCtx = useContext(ThemeContext);
 

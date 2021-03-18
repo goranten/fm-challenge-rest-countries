@@ -1,6 +1,7 @@
 .wrapper {
   position: relative;
   width: 15rem;
+  align-self: flex-start;
 }
 
 .header {
@@ -14,6 +15,10 @@
   justify-content: space-between;
   background-color: var(--clr-accent);
   text-transform: capitalize;
+}
+
+.wrapper button {
+  font-weight: bold;
 }
 
 @media (min-width: 48rem) {

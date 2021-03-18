@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ReactComponent as SearchIcon } from "../../assets/icons/search.svg";
 import { SearchContext } from "../../context/searchContext";
 import Dropdown from "../dropdown/Dropdown";
@@ -15,34 +15,45 @@ const options: string[] = [
 
 const Search = () => {
   const ctx = useContext(SearchContext);
+  const [input, setInput] = useState(ctx?.searchFor || "");
 
   return (
     <section className={styles.search}>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          const formData = new FormData(e.currentTarget);
-          const searchTerm = formData.get("country");
-          if (typeof searchTerm === "string") {
-            // setSearchTerm(searchTerm);
-            ctx?.setSearchFor(searchTerm);
-          }
+          ctx?.setSearchFor(input);
         }}
         className={styles.form}
       >
-        <label className="sr-only" htmlFor="country">
-          Country
-        </label>
-        <input
-          className={styles.input}
-          type="text"
-          name="country"
-          id="country"
-          placeholder="Search for a country..."
-        />
-        <span className={styles.icon}>
-          <SearchIcon />
-        </span>
+        <div className={styles.formGroup}>
+          <label className="sr-only" htmlFor="country">
+            Country
+          </label>
+          <input
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            className={styles.input}
+            type="text"
+            name="country"
+            id="country"
+            placeholder="Search for a country..."
+          />
+          <span className={styles.icon}>
+            <SearchIcon />
+          </span>
+        </div>
+        <button
+          onClick={(e) => {
+            ctx?.setSearchFor("");
+            ctx?.setFilterBy("all");
+            setInput("");
+          }}
+          className={styles.resetButton}
+          type="button"
+        >
+          Reset Search
+        </button>
       </form>
       <Dropdown options={options} label="Filter by Region..." id="regions" />
     </section>
