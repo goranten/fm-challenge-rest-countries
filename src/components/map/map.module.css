@@ -3,3 +3,7 @@
   display: flex;
   justify-content: center;
 }
+
+.map > div {
+  box-shadow: var(--bx-shadow);
+}
