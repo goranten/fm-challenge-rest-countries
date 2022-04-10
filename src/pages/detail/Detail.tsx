@@ -31,6 +31,8 @@ const Detail = () => {
 
   const country = data?.data.find((c) => c.name.toLowerCase() === name);
 
+  console.log(country)
+
   return (
     <>
       <section className={styles.detail}>
@@ -89,7 +91,7 @@ const Detail = () => {
                 </p>
               </div>
 
-              {country.borders.length > 0 && (
+              {country.borders?.length > 0 && (
                 <div className={styles.borderContainer}>
                   <p className={`${styles.bold} ${styles.border}`}>
                     Border Countries:{" "}
