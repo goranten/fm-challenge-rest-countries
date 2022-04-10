@@ -4,7 +4,7 @@ import { SearchResponse } from "../types";
 
 function useLoadCountries() {
   return useQuery<AxiosResponse<SearchResponse[]>>("allCountries", () =>
-    axios.get("https://restcountries.eu/rest/v2/all")
+    axios.get("https://restcountries.com/v2/all")
   );
 }
 
